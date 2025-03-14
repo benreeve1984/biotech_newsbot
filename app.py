@@ -364,4 +364,10 @@ def post():
     return create_results_container(summary)
 
 # Run the server with auto-reload enabled
-serve(reload=True) 
+if __name__ == "__main__":
+    serve(reload=True)
+else:
+    # For Vercel deployment - expose FastHTML app
+    # This will be used by Vercel to create an API endpoint
+    # without running the auto-reload server
+    pass
