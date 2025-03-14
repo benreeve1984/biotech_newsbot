@@ -75,6 +75,22 @@ styles = """
     --code-bg: #f9f9f8;
 }
 
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+}
+
+.spinner-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    border: 2px solid var(--light-text);
+    border-right-color: transparent;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: spinner 0.75s linear infinite;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif;
     background-color: var(--bg-color);
@@ -145,10 +161,11 @@ button:active {
     margin-left: 10px;
     color: var(--light-text);
     font-size: 14px;
+    align-items: center;
 }
 
 #spinner.htmx-request {
-    display: inline;
+    display: flex;
 }
 
 .copy-container {
@@ -232,7 +249,12 @@ def make_copy_button():
 
 def make_loading_indicator():
     """Create the loading indicator"""
-    return Span(id="spinner", cls="htmx-indicator", _="Loading...")
+    return Div(
+        Span(cls="spinner-icon"),
+        "Generating news...",
+        id="spinner", 
+        cls="htmx-indicator"
+    )
 
 @rt("/")
 def get():
