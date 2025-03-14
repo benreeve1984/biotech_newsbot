@@ -1,0 +1,4 @@
+python-fasthtml
+feedparser
+openai
+python-dotenv 

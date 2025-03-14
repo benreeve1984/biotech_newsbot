@@ -1,0 +1,73 @@
+{
+  "name": "FastHTML Single Page App Rules",
+  "rules": [
+    {
+      "name": "Use FastHTML common imports",
+      "description": "Import everything needed from fasthtml.common for consistent importing",
+      "pattern": "from fasthtml.common import \\*",
+      "severity": "warning"
+    },
+    {
+      "name": "Proper app initialization",
+      "description": "Initialize FastHTML app using fast_app() utility function",
+      "pattern": "app, rt = fast_app\\(.*\\)",
+      "severity": "error"
+    },
+    {
+      "name": "Use route decorator",
+      "description": "Use rt() decorator for routing instead of app.route",
+      "pattern": "@rt\\(\"/.*\"\\)",
+      "severity": "warning"
+    },
+    {
+      "name": "HTTP method naming",
+      "description": "Use 'get', 'post', etc. as view function names for HTTP methods",
+      "pattern": "def (get|post|put|delete|patch)\\(",
+      "severity": "info"
+    },
+    {
+      "name": "Use Titled for pages",
+      "description": "Use Titled component for proper page titles and containers",
+      "pattern": "return Titled\\(",
+      "severity": "warning"
+    },
+    {
+      "name": "Proper app serving",
+      "description": "Use serve() utility to run the app with uvicorn",
+      "pattern": "serve\\(\\)",
+      "severity": "error"
+    },
+    {
+      "name": "Use FT components",
+      "description": "Use FastHTML's FT components like P, Div, etc. instead of raw HTML",
+      "pattern": "(P|Div|Form|Input|Button|Link|Script|Style)\\(",
+      "severity": "info"
+    },
+    {
+      "name": "Avoid raw HTML",
+      "description": "Avoid using raw HTML strings, use FastHTML components instead",
+      "pattern": "<.*>",
+      "antipattern": true,
+      "severity": "warning"
+    },
+    {
+      "name": "Use HTMX attributes correctly",
+      "description": "When using HTMX attributes, use FastHTML's format",
+      "pattern": "(hx_[a-z_]+|ws_[a-z_]+)=",
+      "severity": "info"
+    },
+    {
+      "name": "Avoid FastAPI style",
+      "description": "FastHTML is not compatible with FastAPI syntax",
+      "pattern": "@app\\.(get|post|put|delete|patch)\\(",
+      "antipattern": true,
+      "severity": "error"
+    }
+  ],
+  "formatters": {
+    "python": {
+      "line_length": 88,
+      "spaces_per_tab": 4
+    }
+  }
+} 
