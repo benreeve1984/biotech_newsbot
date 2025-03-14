@@ -302,7 +302,7 @@ def build_articles_text(articles):
 def generate_summary(articles_text):
     """Generate summary using OpenAI API"""
     prompt = f"""
-    You are an expert biotech news analyst. Given the following articles, generate a LinkedIn post summary with the most impactful 10 articles for UK biotech investors as bullet points (no headings or footers, just the bullet points). For each bullet:
+    You are an expert biotech news analyst. Given the following articles, generate a LinkedIn post summary with the most impactful 10 UK, Europe, and Middle-East articles as bullet points (no headings or footers, just the bullet points). For each bullet:
       - Start with an appropriate emoji from the following list based on the news category:
           - Regulatory & Approvals: 🏛️
           - M&A & Partnerships: 🤝
